@@ -145,7 +145,7 @@ const Roadmap = () => {
   };
 
   return (
-    <div className="hackathon-container">
+    <div className="hackathon-container" id='timeline'>
       {/* Header */}
       <div className="header">
         <div className="header-glow"></div>

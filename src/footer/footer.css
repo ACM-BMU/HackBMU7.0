@@ -8,10 +8,7 @@
   font-family: 'Helvetica Neue', Arial, sans-serif;
   color: #7dd3fc;
   box-shadow: 0 -5px 30px rgba(0, 0, 0, 0.2);
-  margin: 0.5rem;
-  border-radius: 0.625rem;
   backdrop-filter: blur(4px);
-  border: 1px solid rgba(103, 232, 249, 0.15);
 }
 
 .star-field {
@@ -159,6 +156,7 @@
 }
 
 .linkset {
+  padding-left: 20px;
   display: flex;
   justify-content: space-between;
   overflow: hidden;
@@ -370,6 +368,19 @@
 
 /* Media queries for responsiveness */
 @media (max-width: 768px) {
+
+  .retro-cosmic-footer{
+    padding-top: 30px;
+  }
+
+  .footer-lower{
+    margin-top: 40px;
+  }
+
+  .coordinates, .time-indicator{
+    display: none;
+  }
+
   .footer-content {
     flex-direction: column;
   }
@@ -377,17 +388,18 @@
   .footer-identity {
     flex: 0 0 100%;
     padding-right: 0;
-    margin-bottom: 40px;
   }
-  
-  .interactive-panel {
-    flex: 0 0 100%;
-  }
+ 
   
   .reveal-button {
     top: -60px;
     right: 50%;
     transform: translateX(50%);
+  }
+
+  
+  .reveal-button {
+    display: none;
   }
   
   .footer-lower {

@@ -3,7 +3,7 @@ import './footer.css';
 
 const Footer = () => {
   const [revealLinks, setRevealLinks] = useState(false);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
   const [currentTime, setCurrentTime] = useState('');
   const [starOpacity, setStarOpacity] = useState([]);
   
@@ -19,7 +19,7 @@ const Footer = () => {
   useEffect(() => {
     const handleScroll = () => {
       const position = window.pageYOffset;
-      setScrollPosition(position);
+      // setScrollPosition(position);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -40,19 +40,19 @@ const Footer = () => {
     const timeInterval = setInterval(updateTime, 1000);
     
     // Animate star twinkle effect
-    const twinkleInterval = setInterval(() => {
-      setStarOpacity(prev => 
-        prev.map(opacity => {
-          const newOpacity = opacity + (Math.random() * 0.4 - 0.2);
-          return Math.max(0.3, Math.min(1, newOpacity));
-        })
-      );
-    }, 1000);
+    // const twinkleInterval = setInterval(() => {
+    //   setStarOpacity(prev => 
+    //     prev.map(opacity => {
+    //       const newOpacity = opacity + (Math.random() * 0.4 - 0.2);
+    //       return Math.max(0.3, Math.min(1, newOpacity));
+    //     })
+    //   );
+    // }, 1000);
     
     // Clean up intervals on component unmount
     return () => {
       clearInterval(timeInterval);
-      clearInterval(twinkleInterval);
+      // clearInterval(twinkleInterval);
     };
   }, []);
 
@@ -75,9 +75,9 @@ const Footer = () => {
         ))}
       </div>
       
-      <div className="parallax-layer" style={{ transform: `translateY(${scrollPosition * 0.1}px)` }}></div>
+      <div className="parallax-layer"></div>
       
-      <div className="footer-content">
+      <div className="footer-content items-center">
         <div className="footer-identity">
           <div className="company-mark">
             <div className="geometric-logo">
@@ -94,23 +94,25 @@ const Footer = () => {
         </div>
         
         <div className="interactive-panel">
-          <div className={`linkset ${revealLinks ? 'revealed' : ''}`}>
-            <div className="linkset-column">
-              <span className="link-item">Services</span>
-              <span className="link-item">About Us</span>
-              <span className="link-item">Projects</span>
+          <div className={`linkset ${revealLinks || window.innerWidth < 768 ? 'revealed' : ''}`}>
+            <div className="linkset-column pl-2">
+              <a href="#about" className="link-item" style={{ textDecoration: 'none' }}>About Us</a>
+              <a href="#gallery" className="link-item" style={{ textDecoration: 'none' }}>Gallery</a>
+              <a href="#timeline" className="link-item" style={{ textDecoration: 'none' }}>Timeline</a>
             </div>
-            <div className="linkset-column">
-              <span className="link-item">Blog</span>
-              <span className="link-item">Careers</span>
-              <span className="link-item">Contact</span>
+            <div className='linkset-column'>
+              <a href="#organisers" className="link-item" style={{ textDecoration: 'none' }}>Organisers</a>
+              <a href="#contact" className="link-item" style={{ textDecoration: 'none' }}>Contact Us</a>
+              <a href="#faqs" className="link-item" style={{ textDecoration: 'none' }}>FAQs</a>
             </div>
-            <div className="linkset-column">
-              <span className="link-item">Twitter</span>
-              <span className="link-item">LinkedIn</span>
-              <span className="link-item">Instagram</span>
+
+            <div className='linkset-column'>
+              <a href="https://www.instagram.com" className="link-item" style={{ textDecoration: 'none' }}>Instagram</a>
+              <a href="https://www.linkedin.com" className="link-item" style={{ textDecoration: 'none' }}>LinkedIn</a>
+              <a href="https://www.twitter.com" className="link-item" style={{ textDecoration: 'none' }}>Twitter</a>
             </div>
           </div>
+        </div>
           
           <button 
             className="reveal-button" 
@@ -120,7 +122,6 @@ const Footer = () => {
             <span className="reveal-icon"></span>
           </button>
         </div>
-      </div>
       
       <div className="footer-lower">
         <div className="coordinates">

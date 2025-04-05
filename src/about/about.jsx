@@ -180,7 +180,7 @@ const About = () => {
       />
       
       {/* Nebulae */}
-      <div className="nebulae-container">
+      <div className="nebulae-container" id='about'>
         {nebulae.map(nebula => (
           <motion.div
             key={`nebula-${nebula.id}`}
