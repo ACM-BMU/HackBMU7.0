@@ -44,9 +44,9 @@ const FAQ = () => {
           <div className="hackathon-retro-faq__edition-container">
             <div className="hackathon-retro-faq__edition">7TH EDITION</div>
           </div>
-          <p className="hackathon-retro-faq__description">
+          {/* <p className="hackathon-retro-faq__description">
             A comprehensive platform for innovators to showcase groundbreaking technological solutions across diverse domains.
-          </p>
+          </p> */}
         </div>
 
         <div className="hackathon-retro-faq__list">

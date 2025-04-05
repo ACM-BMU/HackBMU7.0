@@ -103,7 +103,7 @@ const VenueSection = () => {
               </div>
               <div>
                 <h3 className="info-title">QUANTUM LINK</h3>
-                <p className="info-text">+1 (COSMIC) 123-WARP</p>
+                <p className="info-text">7908041180 , 8901827731 </p>
               </div>
             </div>
             
@@ -113,14 +113,14 @@ const VenueSection = () => {
               </div>
               <div>
                 <h3 className="info-title">TRANSMISSION NODE</h3>
-                <p className="info-text">quantum.connect@cosmos.universe</p>
+                <p className="info-text">acm@bmu.edu.in</p>
               </div>
             </div>
           </div>
           
           <div className="status-indicator">
             <div className="status-dot"></div>
-            <span className="status-text">ONLINE</span>
+            <span className="status-text"></span>
           </div>
         </div>
         
@@ -159,18 +159,15 @@ const VenueSection = () => {
       <div className="ping-inner"></div>
     </div>
 
-    {/* University Name in Grid */}
-    <div className="university-label">
-      <p>BML Munjal University</p>
-    </div>
 
+    
     {/* Sectors */}
-    <div className="sector-indicators">
+    {/* <div className="sector-indicators">
       <div className="sector">SECTOR A</div>
       <div className="sector">SECTOR B</div>
       <div className="sector">SECTOR C</div>
       <div className="sector">SECTOR D</div>
-    </div>
+    </div> */}
 
     {/* Coordinates */}
     <div className="map-coordinates">
@@ -192,7 +189,7 @@ const VenueSection = () => {
             <div className="power-bar">
               <div className="power-level"></div>
             </div>
-            <span className="power-text">WARP DRIVE: READY</span>
+            <span className="power-text"></span>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
-/* Base styles and reset */
-.space-section {
+/* .space-section {
   position: relative;
   width: 100%;
   height: 100vh;
@@ -10,7 +9,6 @@
   font-family: 'Montserrat', sans-serif;
 }
 
-/* Background gradient base */
 .background-gradient {
   position: absolute;
   top: 0;
@@ -22,7 +20,6 @@
   pointer-events: none;
 }
 
-/* Stars container positioning */
 .stars-container {
   position: absolute;
   top: 0;
@@ -33,7 +30,6 @@
   pointer-events: none;
 }
 
-/* Individual star styling */
 .star {
   position: absolute;
   border-radius: 50%;
@@ -41,7 +37,6 @@
   will-change: transform, opacity;
 }
 
-/* Nebula styling */
 .nebula {
   position: absolute;
   border-radius: 50%;
@@ -50,7 +45,6 @@
   will-change: transform;
 }
 
-/* Asteroid styling */
 .asteroid {
   filter: blur(0.5px);
   transform-origin: center;
@@ -58,13 +52,11 @@
   pointer-events: none;
 }
 
-/* Comet styling */
 .comet {
   pointer-events: none;
   will-change: transform;
 }
 
-/* Planet base styling */
 .planet {
   position: absolute;
   z-index: 2;
@@ -72,24 +64,20 @@
   will-change: transform, filter;
 }
 
-/* Saturn-specific styling */
 .planet.saturn {
   filter: drop-shadow(0 0 25px rgba(255, 220, 150, 0.5));
 }
 
-/* Blue planet specific styling */
 .planet.blue-planet {
   filter: drop-shadow(0 0 20px rgba(100, 180, 255, 0.6));
 }
 
-/* Real planet images */
 .real-planet-image {
   display: block;
   object-fit: contain;
   will-change: transform;
 }
 
-/* Content positioning */
 .content-container {
   position: relative;
   z-index: 5;
@@ -114,7 +102,6 @@
   padding: 1rem;
 }
 
-/* Text styling */
 .discover-text {
   text-transform: uppercase;
   letter-spacing: 0.3em;
@@ -139,7 +126,6 @@
   text-align: left;
 }
 
-/* Button styling */
 .button-container {
   display: flex;
   justify-content: center;
@@ -157,7 +143,6 @@
   letter-spacing: 0.1em;
 }
 
-/* Animation keyframes */
 @keyframes twinkle {
   0% {
     opacity: 0.3;
@@ -178,13 +163,11 @@
   }
 }
 
-/* Enhanced hover effects */
 .expertise-button:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 20px -10px rgba(0, 136, 255, 0.7);
 }
 
-/* Particle animations */
 @keyframes float {
   0% {
     transform: translateY(0px) rotate(0deg);
@@ -197,7 +180,6 @@
   }
 }
 
-/* Media Queries for responsive design */
 @media (max-width: 768px) {
   .vision-title {
     letter-spacing: -0.01em;
@@ -213,7 +195,6 @@
   }
 }
 
-/* Magical scroll effect for content box */
 .content-box {
   position: relative;
   max-width: 100%;
@@ -223,7 +204,6 @@
   transition: all 0.5s ease-out;
 }
 
-/* Add glowing border effect */
 .content-box::before {
   content: '';
   position: absolute;
@@ -251,7 +231,6 @@
   }
 }
 
-/* Cosmic dust particles */
 .space-section::after {
   content: '';
   position: fixed;
@@ -277,7 +256,6 @@
   }
 }
 
-/* Enhanced 3D text effect */
 .vision-title {
   text-shadow: 
     0 0 15px rgba(120, 150, 255, 0.5),
@@ -289,7 +267,6 @@
   transition: all 0.3s ease;
 }
 
-/* Glowing effect for discover text */
 .discover-text {
   position: relative;
   display: inline-block;
@@ -312,7 +289,6 @@
   width: 100%;
 }
 
-/* Warp speed effect during scroll */
 .stars-container.warp {
   animation: warpSpeed 2s forwards;
   transition: all 2s ease-in-out;
@@ -327,13 +303,11 @@
   }
 }
 
-/* Style for the planet glow */
 .planet-glow {
   will-change: opacity;
   transition: opacity 0.5s ease;
 }
 
-/* Holographic effect for the button */
 .expertise-button::before {
   content: '';
   position: absolute;
@@ -365,17 +339,16 @@
   }
 }
 
-/* Parallax effect for the content on scroll */
 .content-container {
   transform-style: preserve-3d;
 }
 
-/* Ensure the gradient animates smoothly */
+
 .background-gradient {
   transition: background 0.5s ease-out;
 }
 
-/* Custom scrollbar design */
+
 ::-webkit-scrollbar {
   width: 6px;
 }
@@ -393,7 +366,6 @@
   background: linear-gradient(to bottom, #4060ff, #6060cc);
 }
 
-/* Glitch effect for text on hover */
 .vision-title:hover {
   animation: glitch 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
   text-shadow: 
@@ -422,7 +394,6 @@
   }
 }
 
-/* Pulsating animation for the Register button */
 .expertise-button {
   animation: buttonPulse 3s infinite alternate;
   position: relative;
@@ -437,7 +408,6 @@
   }
 }
 
-/* Make content elements interactive */
 .content-paragraph {
   position: relative;
   transition: transform 0.3s ease, color 0.3s ease;
@@ -448,7 +418,6 @@
   color: rgb(170, 200, 255);
 }
 
-/* Additional planet ring effect for Saturn */
 .saturn::after {
   content: '';
   position: absolute;
@@ -465,7 +434,6 @@
   pointer-events: none;
 }
 
-/* Space debris particles that float around */
 @keyframes floatDebris {
   0%, 100% {
     transform: translateY(0) rotate(0deg);
@@ -486,7 +454,6 @@
   position: relative;
 }
 
-/* Space Section */
 .space-section {
   position: relative;
   width: 100%;
@@ -495,7 +462,6 @@
   background: #020c17;
 }
 
-/* Background Elements */
 .background-gradient {
   position: absolute;
   top: 0;
@@ -505,7 +471,6 @@
   z-index: 0;
 }
 
-/* Stellar Wind */
 .stellar-wind {
   position: absolute;
   width: 100%;
@@ -522,7 +487,7 @@
 }
 
 /* Starfield Layers */
-.starfield-layer {
+/* .starfield-layer {
   position: absolute;
   top: 0;
   left: 0;
@@ -569,7 +534,7 @@
   100% { background-position: 400px -400px; }
 }
 
-/* Wormhole Effect */
+
 .wormhole-container {
   position: absolute;
   top: 50%;
@@ -591,14 +556,13 @@
   z-index: 1;
 }
 
-/* Galaxy Spiral */
+
 .galaxy-spiral {
   position: absolute;
   z-index: 0;
   mix-blend-mode: screen;
 }
 
-/* Nebulae */
 .nebulae-container {
   position: absolute;
   top: 0;
@@ -614,7 +578,6 @@
   z-index: 1;
 }
 
-/* Stars */
 .stars-container {
   position: absolute;
   top: 0;
@@ -630,19 +593,17 @@
   z-index: 2;
 }
 
-/* Asteroids */
 .asteroid {
   position: absolute;
   z-index: 3;
 }
 
-/* Comets */
 .comet {
   position: absolute;
   z-index: 4;
 }
 
-/* Planets */
+
 .planet {
   position: absolute;
   z-index: 5;
@@ -675,7 +636,7 @@
   100% { transform: scale(1) rotate(360deg); filter: hue-rotate(0deg); }
 }
 
-/* Stellar Events */
+
 .stellar-event {
   position: absolute;
   z-index: 10;
@@ -700,7 +661,7 @@
 }
 
 /* Content Styles */
-.content-container {
+/* .content-container {
   position: relative;
   z-index: 10;
   width: 100%;
@@ -727,6 +688,336 @@
   backdrop-filter: blur(10px);
   padding: 2rem;
   margin-top: 2rem;
+} 
+  */
+
+
+
+  /* Base styles */
+.space-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #020c17;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  overflow: hidden;
 }
 
-/* Other existing styles... */
+/* Static background elements */
+.static-space-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.static-stars {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 50% 50%, 
+      rgba(255,255,255,0.1) 0.5px, 
+      transparent 1px
+    );
+  background-size: 20px 20px;
+}
+
+.static-nebula {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 70% 20%, 
+      rgba(100, 120, 255, 0.05) 0%, 
+      transparent 40%
+    ),
+    radial-gradient(circle at 30% 80%, 
+      rgba(150, 100, 255, 0.05) 0%, 
+      transparent 40%
+    );
+}
+
+/* Content styling */
+.content-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.content-wrapper {
+  max-width: 800px;
+  width: 90%;
+  text-align: center;
+}
+
+.static-content-box {
+  background: rgba(5, 15, 40, 0.7);
+  backdrop-filter: blur(5px);
+  border-radius: 8px;
+  padding: 2rem;
+  border: 1px solid rgba(100, 150, 255, 0.2);
+}
+
+.vision-title {
+  font-size: 3.5rem;
+  background: linear-gradient(to right, 
+    rgba(120, 150, 255, 1), 
+    rgba(160, 170, 255, 1), 
+    rgba(180, 140, 255, 1));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin: 1rem 0;
+}
+
+.discover-text {
+  color: rgba(200, 220, 255, 0.9);
+  font-size: 1.2rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+}
+
+.static-divider {
+  width: 4rem;
+  height: 2px;
+  background: rgba(100, 150, 255, 0.5);
+  margin: 1.5rem auto;
+}
+
+.content-paragraph {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(230, 240, 255, 0.98) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+}
+
+/* Planets */
+.static-planet {
+  position: absolute;
+  z-index: 1;
+}
+
+.static-planet.saturn {
+  right: 12%;
+  top: 25%;
+  width: 15rem;
+}
+
+.static-planet.blue-planet {
+  left: 15%;
+  bottom: 20%;
+  width: 11rem;
+}
+
+.real-planet-image {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 0 20px rgba(100, 150, 255, 0.3));
+}
+
+/* Button */
+.expertise-button {
+  background: linear-gradient(to right, #1e3c72, #2a5298);
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  margin-top: 2rem;
+opacity: 1.0;
+transition: opacity 0.3s ease;
+}
+
+.expertise-button:hover {
+opacity: 1;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .vision-title {
+    font-size: 2.5rem;
+  }
+  
+  .static-planet.saturn {
+    right: 8%;
+    width: 9rem;
+  }
+  
+  .static-planet.blue-planet {
+    left: 12%;
+    width: 7rem;
+  }
+  
+  .content-container {
+    padding: 1rem;
+  }
+}
+/* Enhanced Register Button */
+.enhanced-register-button {
+  position: relative;
+  background: linear-gradient(135deg, #5b7cff, #825bff);
+  color: white !important;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 25px rgba(91, 124, 255, 0.4);
+}
+
+.enhanced-register-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 30px rgba(91, 124, 255, 0.6);
+}
+
+/* Text Visibility Improvements */
+.enhanced-text {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(230, 240, 255, 0.98) !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 400;
+}
+
+.location-text {
+  font-size: 1.15rem;
+  color: rgba(200, 220, 255, 0.95) !important;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+/* Add these media queries at the bottom of your CSS */
+@media (max-width: 768px) {
+  .vision-title {
+    font-size: 2.2rem;
+    line-height: 1.2;
+    margin: 0.5rem 0;
+  }
+
+  .discover-text {
+    font-size: 1rem;
+    letter-spacing: 0.2em;
+  }
+
+  .content-paragraph {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .static-planet.saturn {
+    right: 5%;
+    top: 15%;
+    width: 8rem;
+  }
+
+  .static-planet.blue-planet {
+    left: 5%;
+    bottom: 15%;
+    width: 6rem;
+  }
+
+  .static-divider {
+    margin: 1rem auto;
+  }
+
+  .enhanced-register-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+  }
+
+  .enhanced-text,
+  .location-text {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vision-title {
+    font-size: 1.8rem;
+    line-height: 1.3;
+  }
+
+  .discover-text {
+    font-size: 0.9rem;
+    letter-spacing: 0.15em;
+  }
+
+  .content-paragraph {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .static-planet.saturn {
+    width: 6rem;
+    right: 2%;
+    top: 10%;
+  }
+
+  .static-planet.blue-planet {
+    width: 4.5rem;
+    left: 2%;
+    bottom: 10%;
+  }
+
+  .enhanced-register-button {
+    padding: 0.8rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .static-content-box {
+    padding: 1.5rem;
+  }
+
+  .content-container {
+    padding: 1rem;
+  }
+
+  .static-divider {
+    width: 3rem;
+    height: 1.5px;
+  }
+}
+
+@media (max-width: 320px) {
+  .vision-title {
+    font-size: 1.6rem;
+  }
+
+  .discover-text {
+    font-size: 0.8rem;
+  }
+
+  .content-paragraph {
+    font-size: 0.9rem;
+  }
+
+  .static-planet.saturn {
+    width: 5rem;
+  }
+
+  .static-planet.blue-planet {
+    width: 4rem;
+  }
+
+  .enhanced-register-button {
+    font-size: 0.85rem;
+    padding: 0.7rem 1.2rem;
+  }
+}

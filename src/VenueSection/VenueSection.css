@@ -1,607 +1,358 @@
 .venue-section {
-    position: relative;
-    padding: 5rem 0;
-    background-color: #0a1e36;
-    overflow: hidden;
-  }
-  
-  .star-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-  }
-  
-  .star {
-    position: absolute;
-    background-color: #fff;
-    border-radius: 50%;
-    animation: twinkle 3s infinite alternate;
-  }
-  
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.2; }
-    50% { opacity: 0.8; }
-  }
-  
-  .venue-header {
-    text-align: center;
-    margin-bottom: 3rem;
-    position: relative;
-    z-index: 1;
-  }
-  
-  .venue-title {
-    font-family: 'Orbitron', 'Press Start 2P', sans-serif;
-    font-size: 2.8rem;
-    color: #fff;
-    letter-spacing: 4px;
-    text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
-    margin-bottom: 1rem;
-    animation: title-glow 3s infinite alternate;
-  }
-  
-  @keyframes title-glow {
-    0% { text-shadow: 0 0 5px rgba(0, 238, 255, 0.7); }
-    100% { text-shadow: 0 0 20px rgba(0, 238, 255, 0.9), 0 0 30px rgba(0, 238, 255, 0.5); }
-  }
-  
-  .venue-scanner {
-    width: 300px;
-    height: 4px;
-    background-color: rgba(0, 238, 255, 0.1);
-    margin: 1rem auto;
-    position: relative;
-    overflow: hidden;
-    border-radius: 2px;
-  }
-  
-  .scanner-line {
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, #00eeff, transparent);
-    animation: scan 3s ease-in-out infinite;
-  }
-  
-  @keyframes scan {
-    0% { left: -50%; }
-    100% { left: 100%; }
-  }
-  
-  .terminal-text {
-    font-family: 'Share Tech Mono', monospace;
-    color: #00eeff;
-    font-size: 1.2rem;
-    height: 1.5rem;
-    margin-bottom: 2rem;
-  }
-  
-  .cursor {
-    animation: cursor-blink 1s step-end infinite;
-  }
-  
-  @keyframes cursor-blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-  
+  position: relative;
+  padding: 5rem 0;
+  background-color: #0a1e36;
+  overflow: hidden;
+}
+
+.star-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  opacity: 0.3;
+}
+
+.venue-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.venue-title {
+  font-family: 'Orbitron', 'Press Start 2P', sans-serif;
+  font-size: 2.8rem;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 10px rgba(0, 238, 255, 0.7);
+  margin-bottom: 1rem;
+}
+
+.venue-scanner {
+  width: 300px;
+  height: 4px;
+  background-color: rgba(0, 238, 255, 0.1);
+  margin: 1rem auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.terminal-text {
+  font-family: 'Share Tech Mono', monospace;
+  color: #00eeff;
+  font-size: 1.2rem;
+  height: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
   .info-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 2rem;
-    position: relative;
-    z-index: 1;
-  }
-  
-  @media (min-width: 768px) {
-    .info-grid {
       grid-template-columns: repeat(2, 1fr);
-    }
   }
-  
-  .contact-card, .location-card {
-    background: rgba(2, 12, 23, 0.8);
-    border-radius: 1rem;
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid rgba(0, 136, 255, 0.3);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
-                0 0 20px rgba(0, 136, 255, 0.2);
-    position: relative;
-    overflow: hidden;
-    backdrop-filter: blur(10px);
-    animation: card-entry 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-card, .location-card {
+  background: rgba(2, 12, 23, 0.8);
+  border-radius: 1rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 136, 255, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(0, 136, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.card-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.header-icon {
+  color: #00eeff;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.header-line {
+  width: 100px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00eeff, transparent);
+  margin-top: 0.5rem;
+}
+
+.heading {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.subtext {
+  color: #7dd3fc;
+  text-align: center;
+  margin-bottom: 2rem;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  opacity: 0.8;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.info-box {
+  display: flex;
+  align-items: center;
+  background: rgba(10, 30, 54, 0.9);
+  padding: 1rem;
+  border-radius: 0.7rem;
+  border: 1px solid rgba(0, 136, 255, 0.4);
+}
+
+.info-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 136, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  border: 1px solid rgba(0, 238, 255, 0.3);
+}
+
+.icon {
+  color: #00eeff;
+  width: 1.2rem;
+  height: 1.2rem;
+  display: block; /* or inline-block — DO NOT use flex here */
+  margin: auto;    /* Ensures it's centered inside the flex parent */
+}
+
+.info-title {
+  font-weight: bold;
+  color: white;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+}
+
+.info-text {
+  color: #bbb;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.map-container {
+  position: relative;
+  width: 100%;
+  height: 18rem;
+  border-radius: 0.8rem;
+  margin-bottom: 1.5rem;
+  background: rgba(10, 30, 54, 0.9);
+  border: 2px solid rgba(0, 136, 255, 0.4);
+  overflow: hidden;
+  align-items: center;
+}
+
+.navigation-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 30, 54, 0.9);
+  border: 1px solid rgba(0, 238, 255, 0.4);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+}
+
+.button-icon {
+  margin-right: 15px;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: #00eeff;
+}
+/* Existing styles remain the same */
+
+/* ========== Mobile Responsive Styles ========== */
+@media (max-width: 768px) {
+  .venue-section {
+    padding: 3rem 0;
   }
-  
-  @keyframes card-entry {
-    0% {
-      opacity: 0;
-      transform: translateY(50vh) scale(0.8);
-      filter: brightness(0.5) blur(2px);
-    }
-    50% {
-      opacity: 0.8;
-    }
-    75% {
-      transform: translateY(-20px) scale(1.05);
-    }
-    100% {
-      transform: translateY(0) scale(1);
-      opacity: 1;
-    }
-  }
-  
-  .contact-card:hover, .location-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6),
-                0 0 30px rgba(0, 238, 255, 0.3),
-                inset 0 0 20px rgba(0, 238, 255, 0.1);
-    border-color: rgba(0, 136, 255, 0.5);
-  }
-  
-  .card-orbit {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    border: 1px dashed rgba(0, 136, 255, 0.2);
-    transform: translate(-50%, -50%);
-    animation: rotate 20s linear infinite;
-    pointer-events: none;
-  }
-  
-  .orbit-particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background-color: rgba(0, 238, 255, 0.8);
-    border-radius: 50%;
-    top: 5%;
-    left: 50%;
-    box-shadow: 0 0 10px 2px rgba(0, 238, 255, 0.5);
-    animation: orbit-pulse 3s infinite alternate;
-  }
-  
-  @keyframes orbit-pulse {
-    0% { transform: scale(0.8); opacity: 0.5; }
-    100% { transform: scale(1.2); opacity: 1; }
-  }
-  
-  @keyframes rotate {
-    0% { transform: translate(-50%, -50%) rotate(0deg); }
-    100% { transform: translate(-50%, -50%) rotate(360deg); }
-  }
-  
-  .card-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .header-icon {
-    color: #00eeff;
-    width: 2.5rem;
-    height: 2.5rem;
-    margin-bottom: 0.5rem;
-    animation: icon-pulse 2s infinite alternate;
-  }
-  
-  @keyframes icon-pulse {
-    0% { filter: drop-shadow(0 0 5px rgba(0, 238, 255, 0.7)); }
-    100% { filter: drop-shadow(0 0 10px rgba(0, 238, 255, 0.9)); }
-  }
-  
-  .header-line {
-    width: 100px;
-    height: 2px;
-    background: linear-gradient(90deg, transparent, #00eeff, transparent);
-    margin-top: 0.5rem;
-    box-shadow: 0 0 8px #00eeff;
-  }
-  
-  .heading {
-    font-family: 'Orbitron', sans-serif;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: white;
-    margin-bottom: 0.5rem;
-    text-align: center;
-    letter-spacing: 2px;
-    text-shadow: 0 0 10px rgba(0, 238, 255, 0.5);
-    text-transform: uppercase;
-  }
-  
-  .subtext {
-    color: #7dd3fc;
-    text-align: center;
-    margin-bottom: 2rem;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    opacity: 0.8;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .info-box {
-    display: flex;
-    align-items: center;
-    background: rgba(10, 30, 54, 0.9);
-    padding: 1rem;
-    border-radius: 0.7rem;
-    border: 1px solid rgba(0, 136, 255, 0.4);
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .info-box::before {
-    content: "";
-    position: absolute;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-    background: linear-gradient(
-      to bottom right,
-      rgba(0, 136, 255, 0) 0%,
-      rgba(0, 136, 255, 0) 40%,
-      rgba(0, 136, 255, 0.1) 45%,
-      rgba(0, 136, 255, 0) 50%,
-      rgba(0, 136, 255, 0) 100%
-    );
-    transform: rotate(30deg);
-    animation: shine 8s infinite;
-  }
-  
-  @keyframes shine {
-    0% { transform: rotate(30deg) translate(-30%, -30%); }
-    100% { transform: rotate(30deg) translate(30%, 30%); }
-  }
-  
-  .info-box:hover {
-    transform: translateX(5px);
-    box-shadow: 0 0 15px rgba(0, 136, 255, 0.4);
-    border-color: rgba(0, 136, 255, 0.6);
-  }
-  
-  .info-icon-container {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(0, 136, 255, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-right: 1rem;
-    border: 1px solid rgba(0, 238, 255, 0.3);
-  }
-  
-  .icon {
-    color: #00eeff;
-    width: 1.2rem;
-    height: 1.2rem;
-    animation: icon-glow 3s infinite alternate;
-    
-    /* Center the icon within its container */
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-  
-    /* Remove margin-right to avoid shifting */
-    margin-right: 0; 
-  }
-  
-  @keyframes icon-glow {
-    0% { filter: drop-shadow(0 0 3px rgba(0, 238, 255, 0.5)); }
-    100% { filter: drop-shadow(0 0 5px rgba(0, 238, 255, 0.8)); }
-  }
-  
-  .info-title {
-    font-weight: bold;
-    color: white;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    margin-bottom: 0.3rem;
-  }
-  
-  .info-text {
-    color: #bbb;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.85rem;
-    letter-spacing: 0.5px;
-  }
-  
-  .status-indicator {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 0.6rem;
-    position: relative;
-    z-index: 2;
-  }
-  
-  .status-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background-color: #00eeff;
-    animation: status-blink 2s infinite alternate;
-  }
-  
-  @keyframes status-blink {
-    0% { opacity: 0.5; box-shadow: 0 0 5px rgba(0, 238, 255, 0.5); }
-    100% { opacity: 1; box-shadow: 0 0 10px rgba(0, 238, 255, 0.9); }
-  }
-  
-  .status-text {
-    color: #00eeff;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.8rem;
+
+  .venue-title {
+    font-size: 2rem;
     letter-spacing: 2px;
   }
+
+  .info-grid {
+    gap: 2rem;
+    padding: 0 1.5rem;
+  }
+
+  .contact-card, 
+  .location-card {
+    padding: 1.8rem;
+  }
+
   .map-container {
-    position: relative;
-    width: 100%;
-    height: 18rem;
-    border-radius: 0.8rem;
-    margin-bottom: 1.5rem;
-    background: rgba(10, 30, 54, 0.9);
-    border: 2px solid rgba(0, 136, 255, 0.4);
-    overflow: hidden;
-    box-shadow: inset 0 0 20px rgba(0, 238, 255, 0.2);
-    z-index: 2;
+    height: 16rem;
   }
-  
-  /* Grid Styling */
-  .map-grid-lines {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(rgba(0, 238, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 238, 255, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: grid-move 20s linear infinite;
-  }
-  
-  /* Animations */
-  @keyframes grid-move {
-    0% { background-position: 0 0; }
-    100% { background-position: 20px 20px; }
-  }
-  
-  /* Overlay Effect */
-  .map-overlay {
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(circle at center, rgba(0, 238, 255, 0.1) 0%, transparent 70%);
-    animation: pulse-overlay 4s infinite alternate;
-  }
-  
-  @keyframes pulse-overlay {
-    0% { opacity: 0.5; }
-    100% { opacity: 0.8; }
-  }
-  
-  /* Ping Effect */
-  .map-ping {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-  }
-  
-  /* New Styles: Google Map Positioned in the Grid */
-  .google-map {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;  /* Ensuring it stays within the grid */
-    height: 100%;
-    opacity: 0.7; /* Adjust transparency to blend with the UI */
-    z-index: 1; /* Places the map below grid and overlay */
-    pointer-events: none; /* Prevents accidental interactions */
-  }
-  
-  /* Optional: Enable Map on Click */
-  .map-container:hover .google-map {
-    pointer-events: auto; /* Allows interactions only when hovered */
-  }
-  
-  .ping-outer {
-    width: 8rem;
-    height: 8rem;
-    background: rgba(0, 136, 255, 0.2);
-    border-radius: 50%;
-    animation: ping-animation 3s infinite;
-  }
-  
-  .ping-inner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+
+  .header-icon {
     width: 2rem;
     height: 2rem;
-    background: rgba(0, 238, 255, 0.6);
-    border-radius: 50%;
-    border: 2px solid rgba(0, 238, 255, 0.8);
-    box-shadow: 0 0 15px rgba(0, 238, 255, 0.7);
   }
-  
-  @keyframes ping-animation {
-    0% { transform: scale(0.8); opacity: 0.8; }
-    100% { transform: scale(1.2); opacity: 0; }
+
+  .heading {
+    font-size: 1.5rem;
   }
-  
-  .sector-indicators {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
-  
-  .sector {
-    position: absolute;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.7rem;
-    color: rgba(0, 238, 255, 0.7);
-  }
-  
-  .sector:nth-child(1) {
-    top: 10px;
-    left: 10px;
-  }
-  
-  .sector:nth-child(2) {
-    top: 10px;
-    right: 10px;
-  }
-  
-  .sector:nth-child(3) {
-    bottom: 40px;
-    left: 10px;
-  }
-  
-  .sector:nth-child(4) {
-    bottom: 40px;
-    right: 10px;
-  }
-  
-  .map-coordinates {
-    position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
-    right: 0.5rem;
-    background: rgba(10, 30, 54, 0.9);
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    text-align: center;
-    border: 1px solid rgba(0, 238, 255, 0.3);
-    z-index: 3;
-  }
-  
-  .coordinates-text {
-    color: #00eeff;
+
+  .subtext {
     font-size: 0.8rem;
-    font-family: 'Share Tech Mono', monospace;
-    letter-spacing: 1px;
-  }
-  
-  .navigation-button {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(10, 30, 54, 0.9);
-    border: 1px solid rgba(0, 238, 255, 0.4);
-    padding: 1rem;
-    border-radius: 0.5rem;
-    color: white;
-    font-weight: bold;
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 0.9rem;
-    letter-spacing: 1px;
-    transition: all 0.3s ease-in-out;
     margin-bottom: 1.5rem;
-    cursor: pointer;
-    overflow: hidden;
-    z-index: 2;
   }
-  
-  .button-glow {
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-      90deg,
-      transparent,
-      rgba(0, 238, 255, 0.3),
-      transparent
-    );
-    transition: 0.5s;
-    pointer-events: none;
+}
+
+@media (max-width: 480px) {
+  .venue-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
   }
-  
-  .navigation-button:hover {
-    background: rgba(0, 238, 255, 0.2);
-    box-shadow: 0 0 20px rgba(0, 238, 255, 0.4);
-    transform: translateY(-5px);
+
+  .venue-scanner {
+    width: 70%;
   }
-  
-  .navigation-button:hover .button-glow {
-    left: 100%;
+
+  .terminal-text {
+    font-size: 1rem;
+    height: auto;
+    margin-bottom: 1.5rem;
   }
-  
-  .button-icon {
-    margin-right: 15px;
-    width: 1.5rem;
-    height: 1.5rem;
-    color: #00eeff;
+
+  .info-grid {
+    padding: 0 1rem;
+    gap: 1.5rem;
   }
-  
-  .power-indicators {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    z-index: 2;
+
+  .contact-card, 
+  .location-card {
+    padding: 1.2rem;
   }
-  
-  .power-bar {
-    width: 100%;
-    height: 8px;
-    background-color: rgba(0, 136, 255, 0.1);
-    border-radius: 4px;
-    overflow: hidden;
-    border: 1px solid rgba(0, 136, 255, 0.3);
+
+  .map-container {
+    height: 14rem;
   }
-  
-  .power-level {
-    height: 100%;
-    width: 85%;
-    background: linear-gradient(90deg, rgba(0, 136, 255, 0.7), #00eeff);
-    border-radius: 4px;
-    animation: power-pulse 2s infinite alternate;
+
+  .info-box {
+    padding: 0.8rem;
   }
-  
-  @keyframes power-pulse {
-    0% { width: 75%; }
-    100% { width: 85%; }
+
+  .info-icon-container {
+    width: 35px;
+    height: 35px;
+    margin-right: 0.8rem;
   }
-  
-  .power-text {
-    color: #00eeff;
-    font-family: 'Share Tech Mono', monospace;
+
+  .icon {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  .info-title {
     font-size: 0.8rem;
-    letter-spacing: 1px;
   }
+
+  .info-text {
+    font-size: 0.75rem;
+  }
+
+  .navigation-button {
+    padding: 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .button-icon {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+
+  .header-line {
+    width: 80px;
+  }
+}
+
+/* Very small phones (e.g. iPhone SE) */
+@media (max-width: 320px) {
+  .venue-title {
+    font-size: 1.4rem;
+  }
+
+  .map-container {
+    height: 12rem;
+  }
+
+  .contact-info {
+    gap: 0.8rem;
+  }
+}
+/* Center the map container */
+
+/* Center the info boxes content */
+
+.map-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure the iframe takes full width */
+.google-map {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
