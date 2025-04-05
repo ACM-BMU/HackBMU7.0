@@ -9,7 +9,7 @@ import Navbar from "../navbar/navbar1.jsx";
 import Footer from "../footer/footer.jsx";
 import Glimpses from "../glimpses/glimpses.jsx";
 import About from "../about/about.jsx";
-import Location from "../location/location.jsx";
+import AboutGlitch from "../aboutglitch/aboutglitch.jsx";
 import "./HomePage.css";
 import LeadOrganizers from "../LeadOrganizers/LeadOrganizers.jsx";
 import ContactUs from "../ContactUs/ContactUs.jsx";
@@ -64,6 +64,7 @@ function Homepage() {
             <span className="nav-time">48:00:00</span>
           </div> */}
           <About />
+          <AboutGlitch />
           <Glimpses />
           <Sponsors />
           <Roadmap />
