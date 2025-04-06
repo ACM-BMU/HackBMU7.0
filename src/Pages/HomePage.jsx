@@ -54,9 +54,6 @@ function Homepage() {
             <Hero />
           </section>
           
-          <section id="about">
-            <About />
-          </section>
 
           <section id="aboutglitch">
             <AboutGlitch />
