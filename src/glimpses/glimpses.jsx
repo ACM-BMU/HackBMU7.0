@@ -163,7 +163,7 @@ const Glimpses = () => {
   }, [handleNext]);
 
   return (
-    <div className="gallery-container">
+    <div className="gallery-container" id='gallery'>
       <div className="terminal-header">
         <div className="terminal-controls">
           <span className="terminal-circle red"></span>

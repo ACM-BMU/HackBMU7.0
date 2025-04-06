@@ -9,7 +9,7 @@ import Navbar from "../navbar/navbar1.jsx"; // This should be your CosmicNav com
 import Footer from "../footer/footer.jsx";
 import Glimpses from "../glimpses/glimpses.jsx";
 import About from "../about/about.jsx";
-import Location from "../location/location.jsx";
+import AboutGlitch from "../aboutglitch/aboutglitch.jsx";
 import "./HomePage.css";
 import LeadOrganizers from "../LeadOrganizers/LeadOrganizers.jsx";
 import ContactUs from "../ContactUs/ContactUs.jsx";
@@ -56,6 +56,10 @@ function Homepage() {
           
           <section id="about">
             <About />
+          </section>
+
+          <section id="aboutglitch">
+            <AboutGlitch />
           </section>
           
           <section id="memories">

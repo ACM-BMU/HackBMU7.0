@@ -75,7 +75,7 @@ const LeadOrganizers = () => {
   ];
 
   return (
-    <div className="lead-organizers-section">
+    <div className="lead-organizers-section" id='organisers'>
       {/* Star background */}
       <div className="star-background"></div>
       

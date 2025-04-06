@@ -58,7 +58,7 @@ const VenueSection = () => {
   
   
   return (
-    <div className="venue-section">
+    <div className="venue-section" id="contact">
       <div className="star-background">
         {renderStars()}
       </div>

@@ -37,7 +37,7 @@ const FAQ = () => {
   ]
 
   return (
-    <div className="hackathon-retro-faq-container">
+    <div className="hackathon-retro-faq-container" id='faqs'>
       <div className="hackathon-retro-faq">
         <div className="hackathon-retro-faq__header">
           <h2 className="hackathon-retro-faq__title">FAQs</h2>
