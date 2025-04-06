@@ -63,7 +63,13 @@ export default function AboutSection() {
                   <span>April 18-20, 2025</span>
                 </div>
                 <div>
-                  <button className="register-button">REGISTER</button>
+                  <a
+                    href="https://unstop.com/college-fests/glitch-by-acm-bmu-student-chapter-bml-munjal-university-bmu-gurgaon-355060"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <button className="register-button">REGISTER</button>
+                  </a>
                 </div>
               </div>
             </div>
