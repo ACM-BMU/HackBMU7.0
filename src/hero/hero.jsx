@@ -43,6 +43,12 @@ const Hero = () => {
     };
   }, []);
   
+  // Handle register button click
+ // Handle register button click
+const handleRegisterClick = () => {
+  window.open("https://unstop.com/hackathons/hackbmu-70-glitch-by-acm-bmu-student-chapter-bml-munjal-university-bmu-gurgaon-1432718", "_blank");
+};
+  
   // Generate static stars for the background - number based on screen size
   const generateStars = () => {
     // Scale stars based on screen width
@@ -134,7 +140,10 @@ const Hero = () => {
             It unites tech enthusiasts to tackle real-world challenges, enhance their skills, and connect with industry leaders. 
             Whether you're a developer, designer, or entrepreneur, it's your chance to shine and turn bold ideas into reality.
           </p>
-          <button className="hero-register-button">
+          <button 
+            className="hero-register-button" 
+            onClick={handleRegisterClick}
+          >
             <span className="button-text">REGISTER NOW</span>
           </button>
         </div>
