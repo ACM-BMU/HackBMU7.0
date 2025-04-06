@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import './glimpses.css';
 import { assets } from '../assets/assets';
 
@@ -108,130 +108,59 @@ const Glimpses = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
+  const [direction, setDirection] = useState('next');
 
-  // Auto-rotate through memories
-  useEffect(() => {
-    const interval = setInterval(() => {
-      handleNext();
-    }, 3000);
-    
-    return () => clearInterval(interval);
-  }, [currentIndex]);
-
-  const handleNext = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => (prevIndex + 1) % hackathonMemories.length);
-        setIsAnimating(false);
-      }, 300);
-    }
-  };
-
-  const handlePrev = () => {
-    if (!isAnimating) {
-      setIsAnimating(true);
-      setTimeout(() => {
-        setCurrentIndex((prevIndex) => 
-          prevIndex === 0 ? hackathonMemories.length - 1 : prevIndex - 1
-        );
-        setIsAnimating(false);
-      }, 300);
-    }
-  };
-  
-  // Calculate indices for visible memories
-  const getVisibleIndices = () => {
+  // Memoize the visible indices calculation
+  const getVisibleIndices = useCallback(() => {
     const totalMemories = hackathonMemories.length;
     return [
       (currentIndex - 1 + totalMemories) % totalMemories,
       currentIndex,
       (currentIndex + 1) % totalMemories,
     ];
-  };
+  }, [currentIndex, hackathonMemories.length]);
 
   const visibleIndices = getVisibleIndices();
 
-  // Random code snippets for hover effect
-  const getRandomCode = (memoryId) => {
-    const codeSnippets = [
-      `/* Innovative Code */
-class Hackathon${memoryId} {
-  constructor() {
-    this.theme = "AI Solutions";
-    this.teamSize = ${Math.floor(Math.random() * 5) + 2};
-    this.hoursLeft = ${Math.floor(Math.random() * 24)};
-  }
-  
-  createMagic() {
-    return \`\${this.theme}_solution_\${Date.now()}\`;
-  }
-}`,
-      
-      `/* DevOps Pipeline */
-function deployHackathonProject${memoryId}() {
-  const stages = [
-    "build", "test", "deploy"
-  ];
-  
-  return stages.map(stage => {
-    console.log(\`Running \${stage}...\`);
-    return Math.random() > 0.9 
-      ? "failure" 
-      : "success";
-  });
-}`,
-      
-      `/* UI Component */
-const HackathonCard${memoryId} = () => {
-  const [votes, setVotes] = useState(${Math.floor(Math.random() * 100)});
-  
+  const handleNext = useCallback(() => {
+    if (!isAnimating) {
+      setDirection('next');
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % hackathonMemories.length);
+        setIsAnimating(false);
+      }, 400); // Reduced duration for snappier feel
+    }
+  }, [isAnimating, hackathonMemories.length]);
+
+  const handlePrev = useCallback(() => {
+    if (!isAnimating) {
+      setDirection('prev');
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => 
+          prevIndex === 0 ? hackathonMemories.length - 1 : prevIndex - 1
+        );
+        setIsAnimating(false);
+      }, 400);
+    }
+  }, [isAnimating, hackathonMemories.length]);
+
+  const goToIndex = useCallback((index) => {
+    if (!isAnimating) {
+      setDirection(index > currentIndex ? 'next' : 'prev');
+      setCurrentIndex(index);
+    }
+  }, [currentIndex, isAnimating]);
+
+  // Auto-rotate through memories
   useEffect(() => {
-    // Simulate incoming votes
-    const timer = setInterval(() => {
-      setVotes(v => v + 1);
-    }, 30000);
+    const interval = setInterval(() => {
+      handleNext();
+    }, 3500); // Adjusted interval
     
-    return () => clearInterval(timer);
-  }, []);
-  
-  return <div>Votes: {votes}</div>;
-}`,
-      
-      `/* Database Schema */
-const hackathonSchema${memoryId} = {
-  project: {
-    name: String,
-    techStack: [String],
-    contributors: [{ 
-      name: String,
-      github: String,
-      role: String
-    }],
-    startedAt: Date,
-    completedAt: Date,
-    stars: Number
-  }
-}`,
-      
-      `/* Data Processing */
-async function analyzeHackathonData${memoryId}() {
-  const projects = await fetchData();
-  
-  return projects
-    .filter(p => p.isCompleted)
-    .map(p => ({
-      name: p.name,
-      score: p.votes * 0.6 + p.complexity * 0.4
-    }))
-    .sort((a, b) => b.score - a.score);
-}`
-    ];
-    
-    // Use the memory ID to pick a snippet, ensuring different memories get different snippets
-    return codeSnippets[memoryId % codeSnippets.length];
-  };
+    return () => clearInterval(interval);
+  }, [handleNext]);
 
   return (
     <div className="gallery-container">
@@ -251,7 +180,6 @@ async function analyzeHackathonData${memoryId}() {
           <span className="command">ls -la ./hackbmu_memories/</span>
         </div>
 
-        {/* Previous Memory Button */}
         <button 
           onClick={handlePrev}
           className="nav-button prev-button"
@@ -262,8 +190,7 @@ async function analyzeHackathonData${memoryId}() {
           </svg>
         </button>
 
-        {/* Memories */}
-        <div className="memories-container">
+        <div className={`memories-container ${isAnimating ? `animating-${direction}` : ''}`}>
           {hackathonMemories.map((memory, index) => {
             const isVisible = visibleIndices.includes(index);
             
@@ -278,8 +205,6 @@ async function analyzeHackathonData${memoryId}() {
               <div 
                 key={memory.id}
                 className={`memory-card ${positionClass}`}
-                onMouseEnter={() => setHoveredIndex(index)}
-                onMouseLeave={() => setHoveredIndex(null)}
               >
                 <div className={`memory-wrapper ${index === visibleIndices[1] ? 'active' : ''}`}>
                   <div className="memory-overlay"></div>
@@ -287,29 +212,19 @@ async function analyzeHackathonData${memoryId}() {
                     src={memory.image} 
                     alt={`Hackathon memory ${memory.id}`}
                     className="memory-image"
+                    loading="lazy"
+                    decoding="async"
                   />
-                  
                   <div 
                     className="memory-color-bar" 
                     style={{ backgroundColor: memory.color }}
-                  ></div>
-                  
-                  {hoveredIndex === index && (
-                    <div className="memory-code-overlay">
-                      <pre>
-                        <code>
-                          {getRandomCode(memory.id)}
-                        </code>
-                      </pre>
-                    </div>
-                  )}
+                  />
                 </div>
               </div>
             ) : null;
           })}
         </div>
 
-        {/* Next Memory Button */}
         <button 
           onClick={handleNext}
           className="nav-button next-button"
@@ -321,19 +236,11 @@ async function analyzeHackathonData${memoryId}() {
         </button>
       </div>
       
-      {/* Terminal command line */}
-      <div className="terminal-command-line">
-        <span className="prompt">$</span> 
-        <span className="command">cat ./memory_${currentIndex + 1}.json</span>
-        <span className="cursor">█</span>
-      </div>
-      
-      {/* Navigation dots */}
       <div className="nav-dots">
         {hackathonMemories.map((_, index) => (
           <button
             key={index}
-            onClick={() => setCurrentIndex(index)}
+            onClick={() => goToIndex(index)}
             className={`nav-dot ${index === currentIndex ? 'active' : ''}`}
             aria-label={`Go to memory ${index + 1}`}
           />
