@@ -43,42 +43,30 @@ export default function AboutSection() {
         </div>
 
         <div className="content-layout-wrapper">
-          <div className="event-description">
-            <p>
-              <span className="highlight">Glitch 2025</span> is an annual
-              technical extravaganza organized by the BML Munjal University ACM
-              Student Chapter in collaboration with regional ACM student
-              chapters across India.
-            </p>
-
-            <p>
-              Join us for three days of cutting-edge technology, thrilling
-              competitions, hands-on workshops, and immersive entertainment as
-              we bring together tech enthusiasts, coders, innovators, and
-              creators from across the nation.
-            </p>
-
-            <div className="event-date">
-              <Calendar className="date-icon" />
-              <span>April 18-20, 2025</span>
-            </div>
-
-            <button className="register-button">
-              <span className="button-glow" />
-              Register Now
-            </button>
-          </div>
-
           <div className="event-features">
-            {features.map((feature, index) => (
-              <FeatureCard
-                key={index}
-                icon={feature.icon}
-                title={feature.title}
-                description={feature.description}
-                index={index}
-              />
-            ))}
+            <div className="feature-card-centered">
+              <div className="feature-card">
+                <h3 className="feature-title">
+                  <span className="highlight">Glitch 2025</span> is an annual
+                  technical extravaganza organized by the BML Munjal University
+                  ACM Student Chapter in collaboration with regional ACM student
+                  chapters across India.
+                </h3>
+                <p>
+                  Join us for three days of cutting-edge technology, thrilling
+                  competitions, hands-on workshops, and immersive entertainment
+                  as we bring together tech enthusiasts, coders, innovators, and
+                  creators from across the nation.
+                </p>
+                <div className="event-date">
+                  <Calendar className="date-icon" />
+                  <span>April 18-20, 2025</span>
+                </div>
+                <div>
+                  <button className="register-button">REGISTER</button>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -116,30 +104,3 @@ function ParticleBackground() {
     </div>
   );
 }
-
-const features = [
-  {
-    icon: <Code className="feature-icon-svg" />,
-    title: "Coding Challenges",
-    description:
-      "Push your limits with our competitive programming contests and hackathons.",
-  },
-  {
-    icon: <Lightbulb className="feature-icon-svg" />,
-    title: "Innovation Hub",
-    description:
-      "Showcase your projects and ideas in our innovation exhibition.",
-  },
-  {
-    icon: <Users className="feature-icon-svg" />,
-    title: "Networking",
-    description:
-      "Connect with industry experts and like-minded tech enthusiasts.",
-  },
-  {
-    icon: <Calendar className="feature-icon-svg" />,
-    title: "Workshops",
-    description:
-      "Gain hands-on experience with cutting-edge technologies and tools.",
-  },
-];

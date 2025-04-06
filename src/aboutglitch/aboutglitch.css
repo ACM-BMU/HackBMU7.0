@@ -88,7 +88,7 @@
     font-weight: 800;
     letter-spacing: 2px;
     margin-bottom: 20px;
-    background: linear-gradient(to right, #40e0d0, #9932cc);
+    background: linear-gradient(to right, #022735, #014552);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -97,7 +97,7 @@
   .title-underline {
     width: 80px;
     height: 4px;
-    background: linear-gradient(to right, #40e0d0, #9932cc);
+    background: linear-gradient(to right, #0690c5, #003c47);
     margin: 20px 0;
     animation: expandWidth 1.5s ease-out;
   }
@@ -151,9 +151,9 @@
   .register-button {
     position: relative;
     padding: 12px 30px;
-    background: linear-gradient(to right, #40e0d0, #9932cc);
+    background: linear-gradient(to right, #022735, #014552);
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
     color: white;
     font-size: 1rem;
     font-weight: 600;
@@ -190,12 +190,14 @@
   /* Features grid */
   .event-features {
     display: grid;
-    grid-template-columns: 1fr;
     gap: 20px;
     animation: slideInRight 1s ease-out;
+    padding: 0 20px; 
   }
   
   .feature-card {
+    width: 80%;
+    margin: 0 auto;
     background-color: rgba(30, 30, 30, 0.5);
     backdrop-filter: blur(8px);
     padding: 25px;
@@ -381,7 +383,6 @@
   
     .event-features {
       flex: 1;
-      grid-template-columns: repeat(2, 1fr);
     }
   }
   
