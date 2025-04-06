@@ -1,34 +1,30 @@
-import React, { useEffect, useRef, useState } from 'react';
-import './sponsors.css';
+import React, { useEffect, useRef, useState } from "react";
+import "./sponsors.css";
+import { assets } from "../assets/assets";
 
 const Sponsors = () => {
   const [titleVisible, setTitleVisible] = useState(false);
   const [cardsVisible, setCardsVisible] = useState([]);
-  const [descriptionsVisible, setDescriptionsVisible] = useState([]);
   const titleRef = useRef(null);
   const sponsorsRef = useRef(null);
-  const descriptionRefs = useRef([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const titleObserver = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           setTitleVisible(true);
-          observer.unobserve(entry.target);
+          titleObserver.unobserve(entry.target);
         }
       },
       { threshold: 0.5 }
     );
 
-    const cardsObserver = new IntersectionObserver(
+    const cardObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const index = parseInt(entry.target.getAttribute('data-index'));
-            setCardsVisible(prev => [...prev, index]);
-            setTimeout(() => {
-              setDescriptionsVisible(prev => [...prev, index]);
-            }, 1000);
+          const index = parseInt(entry.target.getAttribute("data-index"));
+          if (entry.isIntersecting && !cardsVisible.includes(index)) {
+            setCardsVisible((prev) => [...prev, index]);
           }
         });
       },
@@ -36,46 +32,93 @@ const Sponsors = () => {
     );
 
     if (titleRef.current) {
-      observer.observe(titleRef.current);
+      titleObserver.observe(titleRef.current);
     }
 
-    const cards = sponsorsRef.current?.querySelectorAll('.sponsor-card');
-    cards?.forEach(card => cardsObserver.observe(card));
+    const cards = sponsorsRef.current?.querySelectorAll(".sponsor-card");
+    cards?.forEach((card) => cardObserver.observe(card));
 
     return () => {
-      observer.disconnect();
-      cardsObserver.disconnect();
+      titleObserver.disconnect();
+      cardObserver.disconnect();
     };
-  }, []);
+  }, [cardsVisible]);
 
   const sponsors = [
     {
-      name: "Google Cloud",
-      tier: "Platinum Sponsor",
-      logo: "https://cloud.google.com/_static/cloud/images/social-icon-google-cloud-1200-630.png",
-      description: "Providing cloud computing resources and AI/ML credits"
+      name: "Spheron",
+      logo: "https://cdn.brandfetch.io/idc9pQIv4m/w/820/h/984/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description: "Decentralized cloud hosting for modern web apps.",
     },
     {
-      name: "Microsoft",
-      tier: "Gold Sponsor",
-      logo: "https://img-prod-cms-rt-microsoft-com.akamaized.net/cms/api/am/imageFileData/RE1Mu3b?ver=5c31",
-      description: "Supporting innovation with Azure development tools"
+      name: "Balsamiq",
+      logo: "https://cdn.brandfetch.io/idG_yTIc33/w/820/h/206/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description:
+        "Wireframing tool that helps teams plan user interfaces quickly.",
     },
     {
-      name: "GitHub",
-      tier: "Silver Sponsor",
-      logo: "https://github.githubassets.com/images/modules/logos_page/GitHub-Logo.png",
-      description: "Offering developer collaboration platforms"
-    }
+      name: "1Password",
+      logo: "https://cdn.brandfetch.io/ids0xxqhX-/w/272/h/52/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description: "A secure password manager to protect your online accounts.",
+    },
+    {
+      name: "Major League Hacking (MLH)",
+      logo: "https://cdn.brandfetch.io/id76pHTjeR/w/820/h/346/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description:
+        "Official student hackathon league supporting innovation and learning.",
+    },
+    {
+      name: "Axure",
+      logo: "https://cdn.brandfetch.io/id99STEpoQ/theme/dark/logo.svg?c=1dxbfHSJFAPEGdCLU4o5B",
+      description: "UX prototyping and wireframing software for teams.",
+    },
+    {
+      name: "Leading Learners",
+      logo: assets.learners,
+      description:
+        "Platform offering educational resources and student support programs.",
+    },
+    {
+      name: "Taskade",
+      logo: "https://cdn.brandfetch.io/idmPQXX073/w/820/h/219/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description:
+        "Collaborative task management and team productivity platform.",
+    },
+    {
+      name: "echo3D",
+      logo: "https://cdn.brandfetch.io/ideSDI1U4x/w/521/h/96/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description:
+        "Cloud platform for building and deploying 3D/AR/VR content.",
+    },
+    {
+      name: "Wolfram",
+      logo: "https://cdn.brandfetch.io/idcT0xhnHg/w/820/h/854/theme/dark/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description: "Advanced computation software and knowledge engine.",
+    },
+    {
+      name: "Devfolio",
+      logo: assets.devfolio,
+      description: "India’s largest community of developers & hackathons.",
+    },
+    {
+      name: "Coding Ninjas",
+      logo: "https://ninjasfiles.s3.amazonaws.com/logo.png",
+      description: "Online coding courses for developers and learners.",
+    },
+    {
+      name: "Coding Blocks",
+      logo: "https://cdn.brandfetch.io/idlWUAEYyO/w/204/h/86/theme/light/logo.png?c=1dxbfHSJFAPEGdCLU4o5B",
+      description:
+        "Coding Bootcamps and online courses for software development.",
+    },
   ];
 
   const splitDescription = (description) => {
-    return description.split(" ").reduce((acc, word, index) => {
-      const last = acc[acc.length - 1];
-      if (last && last.split(" ").length < 10) {
-        acc[acc.length - 1] = `${last} ${word}`;
-      } else {
+    return description.split(" ").reduce((acc, word) => {
+      if (!acc.length || acc[acc.length - 1].split(" ").length >= 10) {
         acc.push(word);
+      } else {
+        acc[acc.length - 1] += " " + word;
       }
       return acc;
     }, []);
@@ -86,37 +129,44 @@ const Sponsors = () => {
       <div className="floating-background"></div>
       <div className="website-container">
         <section className="sponsors-section">
-          <h2 
-            ref={titleRef} 
-            className={`sponsors_section-title ${titleVisible ? 'visible' : ''}`}
+          <h2
+            ref={titleRef}
+            className={`sponsors_section-title ${
+              titleVisible ? "visible" : ""
+            }`}
           >
             Past Sponsors
           </h2>
           <div className="sponsors-grid" ref={sponsorsRef}>
             {sponsors.map((sponsor, index) => (
-              <div 
+              <div
                 key={index}
                 data-index={index}
-                className={`sponsor-card ${cardsVisible.includes(index) ? 'visible' : ''}`}
-                style={{ '--card-index': index }}
+                className={`sponsor-card ${
+                  cardsVisible.includes(index) ? "visible" : ""
+                }`}
               >
-                <img src={sponsor.logo} alt={sponsor.name} className="sponsor-logo" />
+                <img
+                  src={sponsor.logo}
+                  alt={sponsor.name}
+                  className="sponsor-logo"
+                />
                 <div className="sponsor-details">
                   <h3>{sponsor.name}</h3>
-                  <p className="sponsor-tier">{sponsor.tier}</p>
-                  <div>
-                    {splitDescription(sponsor.description).map((line, lineIndex) => (
-                      <p
-                        key={lineIndex}
-                        className={`sponsor-description ${descriptionsVisible.includes(index) && lineIndex <= descriptionsVisible.length - 1 ? 'visible' : ''}`}
-                        style={{
-                          animationDelay: `${lineIndex * 1.5}s`
-                        }}
-                      >
-                        {line}
-                      </p>
-                    ))}
-                  </div>
+                  {cardsVisible.includes(index) &&
+                    splitDescription(sponsor.description).map(
+                      (line, lineIndex) => (
+                        <p
+                          key={lineIndex}
+                          className="sponsor-description visible"
+                          style={{
+                            animationDelay: `${lineIndex * 0.8}s`,
+                          }}
+                        >
+                          {line}
+                        </p>
+                      )
+                    )}
                 </div>
               </div>
             ))}
