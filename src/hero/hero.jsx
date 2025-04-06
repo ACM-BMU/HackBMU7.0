@@ -9,6 +9,8 @@ const Hero = () => {
     seconds: 0
   });
   
+  const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  
   // Set your event date here
   const eventDate = new Date('2025-07-01T00:00:00');
   
@@ -29,17 +31,31 @@ const Hero = () => {
     calculateTimeLeft();
     const timer = setInterval(calculateTimeLeft, 1000);
     
-    return () => clearInterval(timer);
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    
+    window.addEventListener('resize', handleResize);
+    
+    return () => {
+      clearInterval(timer);
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
   
-  // Generate static stars for the background
+  // Generate static stars for the background - number based on screen size
   const generateStars = () => {
+    // Scale stars based on screen width
+    const starCount = windowWidth > 1600 ? 200 : windowWidth > 1200 ? 150 : 100;
+    
     const stars = [];
-    for (let i = 0; i < 100; i++) {
-      const size = Math.random() * 3;
+    for (let i = 0; i < starCount; i++) {
+      // Make some stars larger on big screens
+      const size = windowWidth > 1600 ? Math.random() * 4 : Math.random() * 3;
       const left = Math.random() * 100;
       const top = Math.random() * 100;
       const opacity = 0.2 + Math.random() * 0.6;
+      const animationDuration = 3 + Math.random() * 7;
       
       stars.push(
         <div 
@@ -54,7 +70,8 @@ const Hero = () => {
             backgroundColor: '#fff',
             position: 'absolute',
             borderRadius: '50%',
-            boxShadow: '0 0 4px rgba(255, 255, 255, 0.3)'
+            boxShadow: '0 0 4px rgba(255, 255, 255, 0.3)',
+            animation: Math.random() > 0.7 ? `twinkle ${animationDuration}s infinite alternate` : 'none'
           }}
         />
       );
@@ -62,11 +79,14 @@ const Hero = () => {
     return stars;
   };
   
-  // Generate static particles for the background
+  // Generate static particles for the background - number based on screen size
   const generateParticles = () => {
+    // Scale particles based on screen width
+    const particleCount = windowWidth > 1600 ? 25 : windowWidth > 1200 ? 20 : 15;
+    
     const particles = [];
-    for (let i = 0; i < 15; i++) {
-      const size = 2 + Math.random() * 4;
+    for (let i = 0; i < particleCount; i++) {
+      const size = 2 + Math.random() * 5;
       const left = Math.random() * 100;
       const top = Math.random() * 100;
       const opacity = 0.2 + Math.random() * 0.5;
@@ -162,7 +182,7 @@ const Hero = () => {
               </div>
               <div className="timeline-event">
                 <div className="event-dot"></div>
-                <div className="event-label"></div>
+                <div className="event-label">JUDGING</div>
               </div>
             </div>
           </div>
