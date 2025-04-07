@@ -8,6 +8,14 @@ const Sponsors = () => {
   const titleRef = useRef(null);
   const sponsorsRef = useRef(null);
 
+  // Function to check device width for dynamic thresholds
+  const getDeviceSpecificThreshold = () => {
+    const width = window.innerWidth;
+    if (width <= 576) return 0.1;  // Mobile
+    if (width <= 992) return 0.2;  // Tablet
+    return 0.3;  // Desktop
+  };
+
   useEffect(() => {
     const titleObserver = new IntersectionObserver(
       ([entry]) => {
@@ -28,7 +36,7 @@ const Sponsors = () => {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: getDeviceSpecificThreshold() }
     );
 
     if (titleRef.current) {
@@ -38,9 +46,34 @@ const Sponsors = () => {
     const cards = sponsorsRef.current?.querySelectorAll(".sponsor-card");
     cards?.forEach((card) => cardObserver.observe(card));
 
+    // Handle resize events to adjust Observer thresholds
+    const handleResize = () => {
+      cardObserver.disconnect();
+      
+      const newCardObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            const index = parseInt(entry.target.getAttribute("data-index"));
+            if (entry.isIntersecting && !cardsVisible.includes(index)) {
+              setCardsVisible((prev) => [...prev, index]);
+            }
+          });
+        },
+        { threshold: getDeviceSpecificThreshold() }
+      );
+      
+      const cards = sponsorsRef.current?.querySelectorAll(".sponsor-card");
+      cards?.forEach((card) => newCardObserver.observe(card));
+      
+      return newCardObserver;
+    };
+
+    window.addEventListener('resize', handleResize);
+
     return () => {
       titleObserver.disconnect();
       cardObserver.disconnect();
+      window.removeEventListener('resize', handleResize);
     };
   }, [cardsVisible]);
 
@@ -98,7 +131,7 @@ const Sponsors = () => {
     {
       name: "Devfolio",
       logo: assets.devfolio,
-      description: "India’s largest community of developers & hackathons.",
+      description: "India's largest community of developers & hackathons.",
     },
     {
       name: "Coding Ninjas",
@@ -113,9 +146,19 @@ const Sponsors = () => {
     },
   ];
 
+  // Optimized for different screen sizes to ensure text chunks are appropriate
   const splitDescription = (description) => {
+    const screenWidth = window.innerWidth;
+    let wordsPerLine = 10;
+    
+    if (screenWidth <= 576) {
+      wordsPerLine = 5;
+    } else if (screenWidth <= 768) {
+      wordsPerLine = 7;
+    }
+    
     return description.split(" ").reduce((acc, word) => {
-      if (!acc.length || acc[acc.length - 1].split(" ").length >= 10) {
+      if (!acc.length || acc[acc.length - 1].split(" ").length >= wordsPerLine) {
         acc.push(word);
       } else {
         acc[acc.length - 1] += " " + word;
