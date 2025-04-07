@@ -33,9 +33,14 @@ const HighTechRetroContact = () => {
   const styles = `
     .space-container {
       position: relative;
-      min-height: 80vh;
+      min-height: 100vh;
       overflow: hidden;
       background: #0a1e36;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .star-field {
@@ -45,6 +50,7 @@ const HighTechRetroContact = () => {
       width: 100%;
       height: 100%;
       pointer-events: none;
+      z-index: 1;
     }
 
     .star {
@@ -58,8 +64,10 @@ const HighTechRetroContact = () => {
       position: relative;
       z-index: 2;
       padding: 4rem 2rem;
+      width: 100%;
       max-width: 1200px;
       margin: 0 auto;
+      box-sizing: border-box;
     }
 
     .header {
@@ -75,6 +83,7 @@ const HighTechRetroContact = () => {
       margin: 0;
       color: #e0e0e0;
       font-family: 'Courier New', monospace;
+      text-shadow: 0 0 5px rgba(0, 170, 255, 0.7);
     }
 
     .header h3 {
@@ -86,8 +95,9 @@ const HighTechRetroContact = () => {
 
     .contact-grid {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 2.5rem;
+      width: 100%;
     }
 
     .contact-card {
@@ -96,6 +106,14 @@ const HighTechRetroContact = () => {
       border: 1px solid rgba(30, 143, 180, 0.3);
       border-radius: 6px;
       backdrop-filter: blur(8px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 25px rgba(0, 170, 255, 0.2);
+      border-color: rgba(30, 143, 180, 0.5);
     }
 
     .name {
@@ -108,31 +126,62 @@ const HighTechRetroContact = () => {
     .contact-detail {
       margin: 0.9rem 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
     }
 
     .label {
       color: #1e8fb4;
       width: 80px;
       font-size: 0.9rem;
+      margin-right: 0.5rem;
     }
 
     .value {
       color: #d0d0d0;
+      flex: 1;
+      word-break: break-word;
     }
 
     .value a {
       color: #00aaff;
       text-decoration: none;
+      transition: color 0.2s ease, text-shadow 0.2s ease;
+      display: inline-block;
     }
 
-    @media (min-width: 768px) {
+    .value a:hover {
+      color: #33bbff;
+      text-shadow: 0 0 8px rgba(0, 170, 255, 0.5);
+    }
+
+    /* Large screens */
+    @media (min-width: 1200px) {
       .contact-grid {
         grid-template-columns: repeat(2, 1fr);
       }
-        @media (max-width: 768px) {
+      
       .contact-content {
-        padding: 2rem 1.5rem;
+        padding: 5rem 2rem;
+      }
+    }
+
+    /* Medium screens */
+    @media (min-width: 768px) and (max-width: 1199px) {
+      .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+      }
+      
+      .header h2 {
+        font-size: 2.2rem;
+      }
+    }
+
+    /* Small tablets */
+    @media (min-width: 481px) and (max-width: 767px) {
+      .contact-content {
+        padding: 3rem 1.5rem;
       }
 
       .header h2 {
@@ -145,34 +194,23 @@ const HighTechRetroContact = () => {
       }
 
       .contact-grid {
+        grid-template-columns: 1fr;
         gap: 1.5rem;
       }
 
       .contact-card {
         padding: 1.5rem;
       }
-
-      .name {
-        font-size: 1.3rem;
-      }
-
-      .label {
-        width: 70px;
-        font-size: 0.85rem;
-      }
-
-      .value {
-        font-size: 0.9rem;
-      }
     }
 
+    /* Mobile phones */
     @media (max-width: 480px) {
       .contact-content {
-        padding: 1.5rem 1rem;
+        padding: 2rem 1rem;
       }
 
       .header h2 {
-        font-size: 1.7rem;
+        font-size: 1.5rem;
         letter-spacing: 2px;
       }
 
@@ -197,22 +235,18 @@ const HighTechRetroContact = () => {
 
       .contact-detail {
         margin: 0.7rem 0;
-        flex-wrap: wrap;
       }
 
       .label {
         width: 100%;
         margin-bottom: 0.3rem;
       }
-
-      .value a {
-        word-break: break-all;
-      }
     }
 
+    /* Small phones */
     @media (max-width: 320px) {
       .header h2 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
       }
 
       .name {
@@ -231,8 +265,39 @@ const HighTechRetroContact = () => {
     /* Touch optimization */
     @media (hover: none) {
       .value a {
-        padding: 4px 8px;
+        padding: 0.5rem;
         display: inline-block;
+      }
+      
+      .contact-card:hover {
+        transform: none;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    /* Dark mode optimization */
+    @media (prefers-color-scheme: dark) {
+      .space-container {
+        background: #050d18;
+      }
+      
+      .contact-card {
+        background: rgba(7, 10, 18, 0.9);
+      }
+    }
+
+    /* Reduced motion accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .contact-card {
+        transition: none;
+      }
+      
+      .contact-card:hover {
+        transform: none;
+      }
+      
+      .value a {
+        transition: none;
       }
     }
   `;
