@@ -48,7 +48,7 @@ const CosmicNav = () => {
   const downloadFile = () => {
     // Create a temporary anchor element
     const link = document.createElement('a');
-    link.href = 'public/img/brochure.pdf'; // Update this path to your file
+    link.href = '/img/brochure.pdf'; // Update this path to your file
     link.download = 'event_brochure.pdf'; // Set the default filename
     document.body.appendChild(link);
     link.click();
