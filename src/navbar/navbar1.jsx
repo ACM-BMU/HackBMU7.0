@@ -46,15 +46,17 @@ const CosmicNav = () => {
   };
 
   const downloadFile = () => {
+    // Update path to match actual brochure location
+    const filePath = '/event_brochure.pdf';
+    
     // Create a temporary anchor element
     const link = document.createElement('a');
-    link.href = '/img/brochure.pdf'; // Update this path to your file
-    link.download = 'event_brochure.pdf'; // Set the default filename
+    link.href = filePath;
+    link.download = 'event_brochure.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
   };
-
   useEffect(() => {
     // Handle navbar background on scroll
     const handleScroll = () => {
