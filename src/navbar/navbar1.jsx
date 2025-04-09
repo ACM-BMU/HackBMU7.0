@@ -47,7 +47,7 @@ const CosmicNav = () => {
 
   const downloadFile = () => {
     // Update path to match actual brochure location
-    const filePath = '/event_brochure.pdf';
+    const filePath = 'public/event_brochure.pdf';
     
     // Create a temporary anchor element
     const link = document.createElement('a');
