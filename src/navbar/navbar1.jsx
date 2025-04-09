@@ -46,13 +46,23 @@ const CosmicNav = () => {
   };
 
   const downloadFile = () => {
-    // Update path to match actual brochure location
-    const filePath = 'public/event_brochure.pdf';
+    // For production build (dist folder structure)
+    const filePath = '/event_brochure.pdf'; // Direct root access
     
-    // Create a temporary anchor element
+    // Alternative if in dist/img folder:
+    // const filePath = '/img/event_brochure.pdf';
+  
+    // Create temporary anchor
     const link = document.createElement('a');
     link.href = filePath;
-    link.download = 'event_brochure.pdf';
+    link.download = 'hackbmu_brochure.pdf'; // Ensures proper filename on download
+    
+    // Add error handling
+    link.onerror = () => {
+      console.error('Failed to load PDF file');
+      // Optional: Implement error UI feedback
+    };
+    
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
