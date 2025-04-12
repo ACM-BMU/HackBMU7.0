@@ -13,8 +13,9 @@ const Hero = () => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
 
   // Set your event date here
-  const eventDate = new Date('2025-07-01T00:00:00');
-
+  const eventDate = new Date('2025-04-19T10:00:00');
+;
+  
   useEffect(() => {
     const calculateTimeLeft = () => {
       const difference = eventDate - new Date();
