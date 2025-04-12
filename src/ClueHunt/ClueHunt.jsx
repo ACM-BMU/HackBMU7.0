@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import ClueHuntNav from "./ClueHuntNav.jsx";
-import Footer from "../footer/footer.jsx";
 import "./ClueHunt.css";
 
 // Sample clue data structure (in a real app, this would come from a backend)
@@ -32,6 +31,10 @@ function ClueHunt() {
   const [isCorrect, setIsCorrect] = useState(false);
   const [completedHunt, setCompletedHunt] = useState(false);
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+  const [scannerPos, setScannerPos] = useState({ x: 0, y: 0 });
+  const [floatingObjects, setFloatingObjects] = useState([]);
+  const [showPulse, setShowPulse] = useState(false);
+  const [initialLoad, setInitialLoad] = useState(true);
 
   // Load team progress from localStorage if available
   useEffect(() => {
@@ -54,10 +57,52 @@ function ClueHunt() {
     };
     
     window.addEventListener('resize', handleResize);
+    
+    // Initialize floating objects
+    generateFloatingObjects();
+
+    // Scanner effect
+    const scannerInterval = setInterval(() => {
+      setScannerPos({
+        x: Math.random() * 100,
+        y: Math.random() * 100
+      });
+    }, 3000);
+    
+    // Show initial pulse animation only once when the page loads
+    if (initialLoad) {
+      setShowPulse(true);
+      setTimeout(() => {
+        setShowPulse(false);
+        setInitialLoad(false);
+      }, 1500);
+    }
+    
     return () => {
       window.removeEventListener('resize', handleResize);
+      clearInterval(scannerInterval);
     };
-  }, []);
+  }, [initialLoad]);
+
+  // Generate floating objects
+  const generateFloatingObjects = () => {
+    const objects = [];
+    const types = ['satellite', 'asteroid', 'data-packet'];
+    
+    for (let i = 0; i < 5; i++) {
+      objects.push({
+        id: i,
+        type: types[Math.floor(Math.random() * types.length)],
+        size: Math.random() * 30 + 10,
+        left: Math.random() * 100,
+        top: Math.random() * 100,
+        animationDuration: Math.random() * 20 + 10,
+        delay: Math.random() * 5
+      });
+    }
+    
+    setFloatingObjects(objects);
+  };
 
   // Save progress whenever it changes
   useEffect(() => {
@@ -186,12 +231,49 @@ function ClueHunt() {
         {generateCosmicStars()}
       </div>
       
+      {/* New digital scanner effect */}
+      <div 
+        className="digital-scanner" 
+        style={{ 
+          left: `${scannerPos.x}%`, 
+          top: `${scannerPos.y}%` 
+        }}
+      ></div>
+      
+      {/* Grid overlay for cyberpunk effect */}
+      <div className="grid-overlay"></div>
+      
+      {/* Floating cosmic objects */}
+      <div className="floating-objects">
+        {floatingObjects.map(obj => (
+          <div 
+            key={obj.id}
+            className={`floating-object ${obj.type}`}
+            style={{
+              width: `${obj.size}px`,
+              height: `${obj.size}px`,
+              left: `${obj.left}%`,
+              top: `${obj.top}%`,
+              animationDuration: `${obj.animationDuration}s`,
+              animationDelay: `${obj.delay}s`
+            }}
+          ></div>
+        ))}
+      </div>
+      
+      {/* Pulse animation - only shown on initial load */}
+      {showPulse && <div className="cosmic-pulse"></div>}
+      
       <div className="clue-hunt-content">
-        <div className="clue-hunt-container">
-          <h1>Treasure Hunt Challenge</h1>
+        <div className={`clue-hunt-container ${showPulse ? 'pulse-active' : ''}`}>
+          <div className="container-glow"></div>
+          <h1>
+            <span className="glitch-text" data-text="Treasure Hunt Challenge">Treasure Hunt Challenge</span>
+          </h1>
 
           {!isLoggedIn ? (
             <div className="team-login">
+              <div className="login-scanner-line"></div>
               <h2>Enter Your Team ID</h2>
               <div className="input-group">
                 <input
@@ -214,7 +296,7 @@ function ClueHunt() {
                   <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                 </svg>
               </div>
-              <h2>Congratulations!</h2>
+              <h2 className="glitch-text" data-text="Congratulations!">Congratulations!</h2>
               <p>You've completed all the clues in the treasure hunt!</p>
               <p>You've reached the final destination. All paths lead to Rome!</p>
               <button onClick={resetProgress}><span>Start Over</span></button>
@@ -223,6 +305,7 @@ function ClueHunt() {
             <div className="clue-container">
               <h2>Clue #{currentClueIndex + 1}</h2>
               <div className="clue-card">
+                <div className="card-scanner"></div>
                 <p>{clues[currentClueIndex].question}</p>
                 <form onSubmit={handleSubmitAnswer}>
                   <input
@@ -240,14 +323,16 @@ function ClueHunt() {
                   </p>
                 )}
               </div>
-              <p className="team-info">Team: {teamId} | Progress: {currentClueIndex + 1}/{clues.length}</p>
+              <p className="team-info">
+                <span className="data-bit"></span>
+                Team: {teamId} | Progress: {currentClueIndex + 1}/{clues.length}
+                <span className="data-bit"></span>
+              </p>
               <button className="reset-btn" onClick={resetProgress}><span>Reset Progress</span></button>
             </div>
           )}
         </div>
       </div>
-      
-      <Footer />
     </div>
   );
 }

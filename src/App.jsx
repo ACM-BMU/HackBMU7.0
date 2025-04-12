@@ -6,24 +6,29 @@ import { useState, useEffect } from "react";
 import Loader from "./Loader/Loader.jsx";
 
 function App() {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [hasVisitedSite, setHasVisitedSite] = useState(false);
 
   useEffect(() => {
-    // Check if this is the first load of the site by checking localStorage
-    const hasVisitedSite = localStorage.getItem('hasVisitedSite');
+    // Check if site has been visited in this session
+    const visited = sessionStorage.getItem('hasVisitedSite');
     
-    if (!hasVisitedSite) {
-      // First visit, show loader
+    if (!visited) {
+      // First visit to the site
       setLoading(true);
       const timer = setTimeout(() => {
         setLoading(false);
+        setHasVisitedSite(true);
         // Mark that we've visited the site in this session
-        localStorage.setItem('hasVisitedSite', 'true');
+        sessionStorage.setItem('hasVisitedSite', 'true');
       }, 3000);
       
       return () => clearTimeout(timer);
+    } else {
+      // Already visited, don't show loader
+      setLoading(false);
+      setHasVisitedSite(true);
     }
-    // If returning from another page in the app, don't show loader
   }, []);
 
   return (
@@ -41,6 +46,3 @@ function App() {
 }
 
 export default App;
-
-/*hi*/
-    
