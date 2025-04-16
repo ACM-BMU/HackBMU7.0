@@ -1,4 +1,5 @@
 import React from "react";
+import "./HuntCompletion.css";
 
 const HuntCompletion = ({ resetProgress }) => {
   // Generate celebration particles for completed hunt

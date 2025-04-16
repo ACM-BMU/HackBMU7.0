@@ -1,6 +1,6 @@
 import Homepage from "./Pages/HomePage";
-import ClueHunt from "./Pages/ClueHunt";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import BitByBit from "./Pages/BitByBit";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./Loader/Loader.jsx";
 
@@ -21,7 +21,8 @@ function App() {
       ) : (
         <Routes>
           <Route element={<Homepage />} path="/" />
-          <Route element={<ClueHunt />} path="/clue-hunt" />
+          <Route element={<Navigate to="/bit-by-bit" replace />} path="/clue-hunt" />
+          <Route element={<BitByBit />} path="/bit-by-bit" />
         </Routes>
       )}
     </Router>

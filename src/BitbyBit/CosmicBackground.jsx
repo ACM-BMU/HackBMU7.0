@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./CosmicBackground.css";
 
 const CosmicBackground = ({ showPulse }) => {
   const [windowWidth, setWindowWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);

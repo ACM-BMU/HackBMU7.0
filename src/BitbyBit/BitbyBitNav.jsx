@@ -2,12 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import '../navbar/navbar1.css';  // Use the main navbar styles
 
-const ClueHuntNav = () => {
+const BitByBitNav = ({ showReset, handleReset }) => {
   const [scrolled, setScrolled] = useState(false);
   
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10);
+      setScrolled(window.scrollY > 50);
     };
     
     window.addEventListener('scroll', handleScroll);
@@ -45,11 +45,11 @@ const ClueHuntNav = () => {
           })}
         </div>
 
-        <div className="cosmic-nav-container" style={{ maxWidth: '250px' }}>
+        <div className="cosmic-nav-container">
           <div className="cosmic-glow-effect"></div>
           
           {/* Logo - with direct link to home */}
-          <Link to="/" className="cosmic-logo-container">
+          <Link to="/" className="cosmic-logo-container" style={{ marginLeft: "-10px" }}>
             <div className="cosmic-logo">
               <div className="logo-planet"></div>
             </div>
@@ -62,12 +62,24 @@ const ClueHuntNav = () => {
             </div>
           </Link>
 
-          {/* Single Home button */}
-          <div className="cosmic-nav-desktop" style={{ display: 'flex' }}>
-            <Link to="/" className="cosmic-nav-item" style={{ textDecoration: 'none' }}>
+          {/* Navigation Items */}
+          <div className="cosmic-nav-desktop">
+            <Link to="/" className="cosmic-nav-item">
               <span className="nav-text">Home</span>
               <span className="nav-hover-effect"></span>
             </Link>
+            
+            <Link to="#about" className="cosmic-nav-item">
+              <span className="nav-text">Mapper</span>
+              <span className="nav-hover-effect"></span>
+            </Link>
+            
+            {showReset && (
+              <div className="cosmic-nav-item cosmic-nav-reset" onClick={handleReset}>
+                <span className="nav-text">Reset</span>
+                <span className="nav-hover-effect"></span>
+              </div>
+            )}
           </div>
         </div>
       </nav>
@@ -75,4 +87,4 @@ const ClueHuntNav = () => {
   );
 };
 
-export default ClueHuntNav; 
+export default BitByBitNav; 
