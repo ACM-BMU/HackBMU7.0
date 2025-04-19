@@ -42,10 +42,8 @@
 
 .hero-content {
   display: flex;
-  max-width: 1600px;
-  /* Increased from 1200px for larger screens */
-  width: 90%;
-  /* Use percentage for flexible width */
+  max-width: 1600px; /* Increased from 1200px for larger screens */
+  width: 90%; /* Use percentage for flexible width */
   margin: 0 auto;
   padding: 0 2rem;
   position: relative;
@@ -54,8 +52,7 @@
 
 .hero-left {
   flex: 1;
-  padding-right: 4rem;
-  /* Increased from 2rem */
+  padding-right: 4rem; /* Increased from 2rem */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,14 +96,7 @@
   font-size: 1.1rem;
   line-height: 1.6;
   margin-bottom: 2.5rem;
-  max-width: 700px;
-  /* Increased from 600px */
-}
-
-.hero-buttons {
-  display: flex;
-  gap: 1rem;
-  align-items: center;
+  max-width: 700px; /* Increased from 600px */
 }
 
 .hero-register-button {
@@ -124,87 +114,6 @@
   transition: all 0.3s ease;
   text-transform: uppercase;
   align-self: flex-start;
-}
-
-.hero-treasure-button {
-  position: relative;
-  padding: 0.8rem 2rem;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 1.1rem;
-  letter-spacing: 2px;
-  background-color: transparent;
-  color: #ff9900;
-  border: 2px solid rgba(255, 153, 0, 0.5);
-  border-radius: 0.5rem;
-  cursor: pointer;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  text-transform: uppercase;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-.hero-treasure-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 153, 0, 0.2),
-    rgba(255, 153, 0, 0.1),
-    transparent
-  );
-  transition: left 0.8s;
-  z-index: 1;
-}
-
-.hero-treasure-button:hover::before {
-  left: 100%;
-}
-
-.hero-treasure-button:hover {
-  background-color: rgba(255, 153, 0, 0.1);
-  box-shadow: 0 0 25px rgba(255, 153, 0, 0.6);
-  transform: translateY(-3px) scale(1.02);
-}
-
-.button-stars {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  pointer-events: none;
-}
-
-.button-star {
-  position: absolute;
-  background-color: #ff9900;
-  border-radius: 50%;
-  width: 2px;
-  height: 2px;
-  opacity: 0;
-  box-shadow: 0 0 4px rgba(255, 153, 0, 0.8);
-  animation: star-twinkle 3s infinite;
-}
-
-.button-star:nth-child(1) { top: 20%; left: 10%; animation-delay: 0s; }
-.button-star:nth-child(2) { top: 30%; left: 85%; animation-delay: 0.3s; }
-.button-star:nth-child(3) { top: 80%; left: 30%; animation-delay: 0.6s; }
-.button-star:nth-child(4) { top: 15%; left: 70%; animation-delay: 0.9s; }
-.button-star:nth-child(5) { top: 70%; left: 90%; animation-delay: 1.2s; }
-
-@keyframes star-twinkle {
-  0%, 100% { opacity: 0; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.5); }
 }
 
 .button-text {
@@ -226,7 +135,7 @@
   padding: 2.5rem;
   border: 1px solid rgba(0, 136, 255, 0.3);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5),
-    0 0 20px rgba(0, 136, 255, 0.2);
+              0 0 20px rgba(0, 136, 255, 0.2);
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
@@ -239,9 +148,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom right,
-      rgba(0, 136, 255, 0.03) 0%,
-      rgba(0, 136, 255, 0) 100%);
+  background: linear-gradient(
+    to bottom right,
+    rgba(0, 136, 255, 0.03) 0%,
+    rgba(0, 136, 255, 0) 100%
+  );
   z-index: 1;
 }
 
@@ -363,36 +274,36 @@
   .hero-content {
     max-width: 1800px;
   }
-
+  
   .hero-title {
     font-size: 4.2rem;
   }
-
+  
   .hero-subtitle {
     font-size: 1.5rem;
   }
-
+  
   .hero-description {
     font-size: 1.2rem;
     max-width: 800px;
   }
-
+  
   .counter-value {
     font-size: 3rem;
   }
-
+  
   .counter-label {
     font-size: 0.9rem;
   }
-
+  
   .timeline-title {
     font-size: 1.8rem;
   }
-
+  
   .event-label {
     font-size: 0.9rem;
   }
-
+  
   .timeline-container {
     padding: 3rem;
   }
@@ -402,15 +313,15 @@
   .hero-content {
     max-width: 1400px;
   }
-
+  
   .hero-title {
     font-size: 3.8rem;
   }
-
+  
   .hero-subtitle {
     font-size: 1.4rem;
   }
-
+  
   .hero-description {
     font-size: 1.15rem;
     max-width: 750px;
@@ -422,34 +333,23 @@
   .hero-content {
     flex-direction: column;
   }
-
+  
   .hero-left {
     padding-right: 0;
     margin-bottom: 3rem;
     text-align: center;
   }
-
+  
   .hero-title {
     font-size: 2.8rem;
   }
-
+  
   .hero-description {
     margin: 0 auto 2.5rem;
   }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .hero-register-button,
-  .hero-treasure-button {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 0.7rem 1.5rem;
+  
+  .hero-register-button {
+    align-self: center;
   }
 }
 
@@ -457,15 +357,15 @@
   .hero-title {
     font-size: 2.3rem;
   }
-
+  
   .hero-subtitle {
     font-size: 1.1rem;
   }
-
+  
   .counter-value {
     font-size: 2rem;
   }
-
+  
   .timeline-title {
     font-size: 1.3rem;
   }
@@ -475,50 +375,33 @@
   .hero-section {
     padding: 2rem 0;
   }
-
+  
   .hero-content {
     padding: 0 1rem;
   }
-
+  
   .hero-title {
     font-size: 1.8rem;
   }
-
+  
   .timeline-container {
     padding: 1.5rem;
   }
-
+  
   .counter-value {
     font-size: 1.5rem;
   }
-
+  
   .counter-label,
   .event-label {
     font-size: 0.7rem;
   }
-
-  .hero-buttons {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1rem;
-  }
-
-  .hero-register-button,
-  .hero-treasure-button {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    font-size: 1rem;
-    padding: 0.7rem 1.5rem;
-  }
 }
-
 @keyframes twinkle {
   0% {
     opacity: 0.2;
     transform: scale(1);
   }
-
   100% {
     opacity: 0.8;
     transform: scale(1.3);

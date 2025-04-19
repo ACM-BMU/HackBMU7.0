@@ -37,6 +37,3 @@ out/
 # Misc
 *.bak
 *.swp
-
-# Service account credentials
-server/service-account.json

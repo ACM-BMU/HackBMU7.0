@@ -10,7 +10,7 @@ const CosmicNav = () => {
 
   const navItems = [
     { id: 'home', label: 'Home' },
-    { id: 'aboutglitch', label: 'About' },
+    { id: 'about', label: 'About' },
     { id: 'memories', label: 'Memories' },
     { id: 'sponsors', label: 'Sponsors' },
     { id: 'timeline', label: 'Timeline' },

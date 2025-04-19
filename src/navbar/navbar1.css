@@ -195,9 +195,8 @@
   border-radius: 4px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  justify-self: center;
-  align-self: center;
-  text-decoration: none;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-text {
