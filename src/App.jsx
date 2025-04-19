@@ -1,5 +1,5 @@
 import Homepage from "./Pages/HomePage";
-import BitByBit from "./Pages/BitByBit";
+import BitByBit from "./Pages/BitbyBit";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Loader from "./Loader/Loader.jsx";
